@@ -1,0 +1,12 @@
+---
+title: bokeh embed
+---
+
+#### bokeh splom
+
+{{< embed bokeh.ipynb#bokeh-splom >}}
+
+#### again
+
+{{< embed bokeh.ipynb#bokeh-splom-2 >}}
+

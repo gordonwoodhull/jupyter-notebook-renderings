@@ -1,0 +1,11 @@
+---
+title: plotly embed
+---
+
+#### plotly violin
+
+{{< embed plotly-python.ipynb#plotly-iris-violin >}}
+
+#### again
+
+{{< embed plotly-python.ipynb#plotly-iris-violin-2 >}}

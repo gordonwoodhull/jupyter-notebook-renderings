@@ -1,0 +1,22 @@
+project:
+  type: website
+website:
+  title: "light/dark renderings in jupyter notebooks"
+  sidebar:
+    style: "docked"
+    contents:
+      - altair-embed.qmd
+      - bokeh-embed.qmd
+      - great-tables-embed.qmd
+      - matplotlib-embed.qmd
+      - plotly-embed.qmd
+      - plotnine-embed.qmd
+      - pygal-embed.qmd
+      - seaborn-embed.qmd
+brand: unified-brand.yml
+theme:
+  light: brand
+  dark: [brand, dark-fixups.scss]
+format:
+  html:
+    respect-user-color-scheme: true

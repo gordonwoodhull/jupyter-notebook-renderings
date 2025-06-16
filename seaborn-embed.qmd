@@ -1,0 +1,5 @@
+---
+title: seaborn embed
+---
+
+{{< embed seaborn.ipynb#seaborn-iris-violin >}}

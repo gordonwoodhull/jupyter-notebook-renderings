@@ -1,0 +1,17 @@
+color:
+  background:
+    light: "#ffffff"
+    dark: "#282B30"
+  foreground:
+    light: "#333333"
+    dark: "#aaaaaa"
+  primary: white
+typography:
+  fonts:
+    - family: "Montserrat"
+      source: google
+  base:
+    family: "Montserrat"
+  monospace-block:
+    background-color:
+      dark: "rgba(233, 236, 239, 0.14)"

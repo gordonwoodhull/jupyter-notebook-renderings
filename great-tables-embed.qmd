@@ -1,0 +1,8 @@
+---
+title: great tables embed
+---
+
+#### plotly violin
+
+{{< embed great-tables.ipynb#great-tables >}}
+

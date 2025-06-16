@@ -1,0 +1,5 @@
+---
+title: pygal embed
+---
+
+{{< embed pygal.ipynb#pygal-demo >}}
