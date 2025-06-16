@@ -1,0 +1,201 @@
+[
+  {
+    "objectID": "bokeh.html",
+    "href": "bokeh.html",
+    "title": "bokeh",
+    "section": "",
+    "text": "How can we create a working scatter plot matrix (SPLOM) of the iris dataset using Bokeh?"
+  },
+  {
+    "objectID": "bokeh.html#question",
+    "href": "bokeh.html#question",
+    "title": "bokeh",
+    "section": "",
+    "text": "How can we create a working scatter plot matrix (SPLOM) of the iris dataset using Bokeh?"
+  },
+  {
+    "objectID": "bokeh.html#overview",
+    "href": "bokeh.html#overview",
+    "title": "bokeh",
+    "section": "Overview",
+    "text": "Overview\nWe’ll create an interactive scatter plot matrix visualization of the iris dataset using Bokeh, with correct color mapping for different species.\nNote: Bokeh dark theme helper is incomplete due to lack of documentation (?)"
+  },
+  {
+    "objectID": "bokeh.html#code",
+    "href": "bokeh.html#code",
+    "title": "bokeh",
+    "section": "Code",
+    "text": "Code\n\n\n\n  \n\n\n\n\n  \n\n\n\nBokeh has issues with emitting extra outputs. Quarto is partly fixing this up but the second plot will currently not work with renderings:\n\nlight_theme()\nshow(grid)\n\ndark_theme()\nshow(grid)"
+  },
+  {
+    "objectID": "bokeh.html#explanation",
+    "href": "bokeh.html#explanation",
+    "title": "bokeh",
+    "section": "Explanation",
+    "text": "Explanation\nThis code creates a violin plot of the sepal length distribution for each species in the Iris dataset using Bokeh. Here’s a breakdown of what the code does:\n\nWe start by importing the necessary libraries, including Pandas for data manipulation, NumPy for numerical operations, and various Bokeh modules for plotting.\nWe load the Iris dataset using scikit-learn’s load_iris() function and convert it to a Pandas DataFrame for easy manipulation.\nWe prepare the data for the violin plot by defining the categories (iris species) and choosing a color palette.\nWe create a Bokeh figure with appropriate titles and labels.\nFor each iris species, we:\n\nSubset the data for that species.\nCompute the kernel density estimation (KDE) using NumPy’s histogram function.\nScale the KDE to create the violin shape.\nAdd the violin shape to the plot using Bokeh’s patch method, creating a symmetrical violin by mirroring the shape.\n\nWe customize the plot by removing the x-axis grid, setting the y-axis range, and adding axis labels.\nFinally, we display the plot using Bokeh’s show function.\n\nThe resulting violin plot will show the distribution of sepal lengths for each iris species. The width of each “violin” represents the frequency of data points at that y-value, giving us a clear visualization of the data distribution. This allows us to compare not just the central tendencies of each species’ sepal length, but also the spread and shape of the distributions.\nThis visualization can help us identify differences between the species. For example, we might see that one species has a broader distribution of sepal lengths, while another has a more concentrated distribution. We might also observe multimodal distributions or other interesting patterns that wouldn’t be apparent from simple summary statistics."
+  },
+  {
+    "objectID": "plotnine-embed.html",
+    "href": "plotnine-embed.html",
+    "title": "plotnine embed",
+    "section": "",
+    "text": "Source: plotnine",
+    "crumbs": [
+      "plotnine embed"
+    ]
+  },
+  {
+    "objectID": "altair.html",
+    "href": "altair.html",
+    "title": "altair",
+    "section": "",
+    "text": "from quarto import theme_brand_altair\nimport altair as alt\n\nlight_theme = theme_brand_altair('light-brand.yml')\ndark_theme = theme_brand_altair('dark-brand.yml')\n\nalt.theme.register('light_theme', enable=False)(light_theme)\nalt.theme.register('dark_theme', enable=False)(dark_theme);\n\n\nNo crossref or caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\necho: false\n#| renderings: [light, dark]\n\nchart = alt.Chart(cars).mark_point().encode(\n        x='Horsepower',\n        y='Acceleration',\n        color='Origin',\n    ).properties(width=800, height=500).interactive()\n\nalt.theme.enable('light_theme')\nchart.show()\n\nalt.theme.enable('dark_theme')\nchart.show()"
+  },
+  {
+    "objectID": "great-tables.html",
+    "href": "great-tables.html",
+    "title": "great tables",
+    "section": "",
+    "text": "from great_tables import GT, exibble\nfrom IPython.display import display\n\ngt_ex = (\n  GT(exibble.head(5), rowname_col=\"row\", groupname_col=\"group\")\n    .tab_header(\"THE HEADING\", \"(a subtitle)\")\n    .tab_stubhead(\"THE STUBHEAD\")\n    .tab_source_note(\"THE SOURCE NOTE\")\n)\n\ndisplay(gt_ex.tab_options(**light_theme))\ndisplay(gt_ex.tab_options(**dark_theme))\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti."
+  },
+  {
+    "objectID": "plotly-embed.html",
+    "href": "plotly-embed.html",
+    "title": "plotly embed",
+    "section": "",
+    "text": "plotly violin\n\n\n\n\n\n\n\n\n\nSource: plotly-python\n\n\nagain",
+    "crumbs": [
+      "plotly embed"
+    ]
+  },
+  {
+    "objectID": "plotly-python.html",
+    "href": "plotly-python.html",
+    "title": "plotly-python",
+    "section": "",
+    "text": "Question\nHow can I draw a violin plot of the Iris data using Plotly?\n\n\nExplanation\nPlotly is an interactive plotting library that is ideal for creating detailed interactive plots, including violin plots. It is easy to create a violin plot using the plotly.express module, which simplifies many common plotting tasks. The Iris dataset, commonly used in machine learning, is built into the sklearn library. We will load this dataset, convert it into a suitable format using Pandas, and then plot it using Plotly.\n\n\nCode\n\n\n\n\n\n\n\n\nAgain!\n\n\n\n\n\n\n\n\nThis code uses plotly.express to create a violin plot of the sepal length by species from the Iris dataset. The sepal length (cm) is plotted on the Y-axis, with each species on the X-axis. The violin plot provides insights into the distribution of sepal length measurements within each species, along with a box plot overlay and individual measurements as jittered points for detailed data analysis."
+  },
+  {
+    "objectID": "plotnine.html",
+    "href": "plotnine.html",
+    "title": "plotnine",
+    "section": "",
+    "text": "Create a violin plot of the iris data using plotnine."
+  },
+  {
+    "objectID": "plotnine.html#question",
+    "href": "plotnine.html#question",
+    "title": "plotnine",
+    "section": "",
+    "text": "Create a violin plot of the iris data using plotnine."
+  },
+  {
+    "objectID": "plotnine.html#overview",
+    "href": "plotnine.html#overview",
+    "title": "plotnine",
+    "section": "Overview",
+    "text": "Overview\nWe’ll create a violin plot to visualize the distribution of measurements across different iris species using the plotnine library, which implements a grammar of graphics in Python similar to R’s ggplot2."
+  },
+  {
+    "objectID": "plotnine.html#code-and-explanation",
+    "href": "plotnine.html#code-and-explanation",
+    "title": "plotnine",
+    "section": "Code and Explanation",
+    "text": "Code and Explanation\n\nfrom quarto import theme_brand_plotnine\n\nlight_theme = theme_brand_plotnine('light-brand.yml')\ndark_theme = theme_brand_plotnine('dark-brand.yml')\n\n\nfrom plotnine import *\nimport pandas as pd\nfrom sklearn.datasets import load_iris\n\n# Load the iris dataset\niris = load_iris()\niris_df = pd.DataFrame(iris.data, columns=iris.feature_names)\niris_df['species'] = pd.Categorical(iris.target_names[iris.target])\n\nplot = (ggplot(iris_df, aes(x='species', y='sepal length (cm)', fill='species'))\n    + geom_violin()\n    + labs(title='Distribution of Sepal Length by Iris Species',\n            x='Species',\n            y='Sepal Length (cm)')\n    + theme_minimal()\n)\n\ndisplay(plot + light_theme)\ndisplay(plot + dark_theme)\n\n\n\n\n\n\n\nThis code:\n\nImports the necessary libraries\nLoads the iris dataset and converts it to a pandas DataFrame\nCreates a violin plot showing the distribution of sepal length for each iris species\nAdds appropriate labels and uses a minimal theme for clean visualization\n\nThe key correction in this version is using the proper column name ‘sepal length (cm)’ instead of ‘sepal_length’, as that’s how it’s named in the sklearn iris dataset. The violin plot combines aspects of a box plot with a density plot, showing the full distribution shape of the data. The width of each “violin” represents the density of data points at that y-value, making it easy to see where measurements are concentrated for each species."
+  },
+  {
+    "objectID": "altair-embed.html",
+    "href": "altair-embed.html",
+    "title": "altair embed",
+    "section": "",
+    "text": "no crossref, no caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSource: altair\n\n\ncrossref, no caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: cars dataset, acceleration by year\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "crumbs": [
+      "altair embed"
+    ]
+  },
+  {
+    "objectID": "pygal-embed.html",
+    "href": "pygal-embed.html",
+    "title": "pygal embed",
+    "section": "",
+    "text": "Pygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\nSource: pygal",
+    "crumbs": [
+      "pygal embed"
+    ]
+  },
+  {
+    "objectID": "matplotlib-embed.html",
+    "href": "matplotlib-embed.html",
+    "title": "matplotlib embed",
+    "section": "",
+    "text": "no crossref, no caption\n\n\n\n\n\n\n\n\n\nSource: matplotlib\n\n\ncrossref, no caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\ncrossref and caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: cosine",
+    "crumbs": [
+      "matplotlib embed"
+    ]
+  },
+  {
+    "objectID": "seaborn.html",
+    "href": "seaborn.html",
+    "title": "seaborn",
+    "section": "",
+    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset.\n\n\n\nFollow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
+  },
+  {
+    "objectID": "seaborn.html#overview",
+    "href": "seaborn.html#overview",
+    "title": "seaborn",
+    "section": "",
+    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset."
+  },
+  {
+    "objectID": "seaborn.html#code-implementation",
+    "href": "seaborn.html#code-implementation",
+    "title": "seaborn",
+    "section": "",
+    "text": "Follow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
+  },
+  {
+    "objectID": "great-tables-embed.html",
+    "href": "great-tables-embed.html",
+    "title": "great tables embed",
+    "section": "",
+    "text": "plotly violin\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nSource: great tables",
+    "crumbs": [
+      "great tables embed"
+    ]
+  },
+  {
+    "objectID": "matplotlib.html",
+    "href": "matplotlib.html",
+    "title": "matplotlib",
+    "section": "",
+    "text": "No crossref or caption"
+  },
+  {
+    "objectID": "bokeh-embed.html",
+    "href": "bokeh-embed.html",
+    "title": "bokeh embed",
+    "section": "",
+    "text": "bokeh splom\n\n\n\n\n  \n\n\n\n\n  \n\n\n\nSource: bokeh\n\n\nagain",
+    "crumbs": [
+      "bokeh embed"
+    ]
+  },
+  {
+    "objectID": "pygal.html",
+    "href": "pygal.html",
+    "title": "pygal",
+    "section": "",
+    "text": "from quarto import theme_brand_pygal\n\nlight_style = theme_brand_pygal('light-brand.yml')\ndark_style = theme_brand_pygal('dark-brand.yml')\n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE"
+  },
+  {
+    "objectID": "seaborn-embed.html",
+    "href": "seaborn-embed.html",
+    "title": "seaborn embed",
+    "section": "",
+    "text": "Source: seaborn",
+    "crumbs": [
+      "seaborn embed"
+    ]
+  }
+]
