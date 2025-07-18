@@ -1,7 +1,0 @@
----
-title: plotnine embed
----
-
-
-{{< embed plotnine.ipynb#plotnine-iris-violin >}}
-

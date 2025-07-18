@@ -12,14 +12,14 @@ website:
           - subfigure-contents-shortcode-plotnine.ipynb
       - section: 'embed shortcode'
         contents:
-          - altair-embed.qmd
-          - bokeh-embed.qmd
-          - great-tables-embed.qmd
-          - matplotlib-embed.qmd
-          - plotly-embed.qmd
-          - plotnine-embed.qmd
-          - pygal-embed.qmd
-          - seaborn-embed.qmd
+          - altair-embed.ipynb
+          - bokeh-embed.ipynb
+          - great-tables-embed.ipynb
+          - matplotlib-embed.ipynb
+          - plotly-embed.ipynb
+          - plotnine-embed.ipynb
+          - pygal-embed.ipynb
+          - seaborn-embed.ipynb
 brand:
   light: light-brand.yml
   dark: dark-brand.yml
