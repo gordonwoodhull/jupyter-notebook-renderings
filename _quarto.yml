@@ -7,9 +7,9 @@ website:
     contents:
       - section: 'contents shortcode'
         contents:
-          - subfigure-contents-shortcode-altair.ipynb
-          - subfigure-contents-shortcode-plotly.ipynb
-          - subfigure-contents-shortcode-plotnine.ipynb
+          - altair-contents.ipynb
+          - plotly-contents.ipynb
+          - plotnine-contents.ipynb
       - section: 'embed shortcode'
         contents:
           - altair-embed.ipynb
