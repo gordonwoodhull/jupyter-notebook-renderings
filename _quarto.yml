@@ -5,15 +5,24 @@ website:
   sidebar:
     style: "docked"
     contents:
-      - altair-embed.qmd
-      - bokeh-embed.qmd
-      - great-tables-embed.qmd
-      - matplotlib-embed.qmd
-      - plotly-embed.qmd
-      - plotnine-embed.qmd
-      - pygal-embed.qmd
-      - seaborn-embed.qmd
-brand: unified-brand.yml
+      - section: 'contents shortcode'
+        contents:
+          - subfigure-contents-shortcode-altair.ipynb
+          - subfigure-contents-shortcode-plotly.ipynb
+          - subfigure-contents-shortcode-plotnine.ipynb
+      - section: 'embed shortcode'
+        contents:
+          - altair-embed.qmd
+          - bokeh-embed.qmd
+          - great-tables-embed.qmd
+          - matplotlib-embed.qmd
+          - plotly-embed.qmd
+          - plotnine-embed.qmd
+          - pygal-embed.qmd
+          - seaborn-embed.qmd
+brand:
+  light: light-brand.yml
+  dark: dark-brand.yml
 theme:
   light: brand
   dark: [brand, dark-fixups.scss]
