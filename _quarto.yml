@@ -5,6 +5,10 @@ website:
   sidebar:
     style: "docked"
     contents:
+      - section: 'markdown cells'
+        contents:
+          - matplotlib-markdown.ipynb
+          - plotly-markdown.ipynb
       - section: 'contents shortcode'
         contents:
           - altair-contents.ipynb
