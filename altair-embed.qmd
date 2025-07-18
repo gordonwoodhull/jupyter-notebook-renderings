@@ -2,22 +2,11 @@
 title: altair embed
 ---
 
-### no crossref, no caption
+::: {#fig-altair-mpg-hp}
 
 {{< embed altair.ipynb#altair-mpg-hp >}}
 
-### crossref, no caption
-
-::: {#fig-altair-hp-year}
-
-{{< embed altair.ipynb#altair-hp-year >}}
-
 :::
 
-::: {#fig-altair-acc-year}
-
-{{< embed altair.ipynb#altair-acc-year >}}
-cars dataset, acceleration by year
-:::
 
 {{< lipsum 1 >}}
