@@ -2,6 +2,7 @@ project:
   type: website
 website:
   title: "light/dark renderings in jupyter notebooks"
+  repo-url: https://github.com/gordonwoodhull/jupyter-notebook-renderings
   sidebar:
     style: "docked"
     contents:
@@ -33,3 +34,5 @@ theme:
 format:
   html:
     respect-user-color-scheme: true
+    code-tools:
+      source: repo
