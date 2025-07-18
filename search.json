@@ -39,112 +39,65 @@
     "href": "altair-contents.html",
     "title": "altair contents",
     "section": "",
-    "text": "This code was translated by Databot and Claude from the plotly example at\nhttps://quarto.org/docs/get-started/computations/jupyter.html\nIt looks different because the scale defaults are different (?)\nIt also exhibits the same plot width bug only worse (scroll right).\n\n\nCode\nimport plotly.express as px\nimport altair as alt\nimport pandas as pd\n\ngapminder = px.data.gapminder()\n\n\ndef gapminder_plot(year, theme='default'):\n    \"\"\"\n    Create a gapminder scatter plot using Altair\n\n    Parameters:\n    year: int - Year to filter data for\n    theme: str - Altair theme name (options: 'default', 'dark', 'fivethirtyeight',\n                 'ggplot2', 'googlecharts', 'latimes', 'urbaninstitute', 'vox')\n    \"\"\"\n    # Filter data for the specified year\n    gapminder_year = gapminder[gapminder['year'] == year]\n\n    # Set the theme\n    alt.theme.enable(theme)\n\n    # Create the scatter plot\n    chart = alt.Chart(gapminder_year).mark_circle().encode(\n        x=alt.X('gdpPercap:Q',\n                title='GDP per Capita',\n                scale=alt.Scale(type='log')),\n        y=alt.Y('lifeExp:Q',\n                title='Life Expectancy'),\n        color=alt.Color('continent:N',\n                       title='Continent',\n                       scale=alt.Scale(scheme='category10')),\n        size=alt.Size('pop:Q',\n                     title='Population',\n                     scale=alt.Scale(range=[50, 1000]),\n                     legend=alt.Legend(\n                         symbolFillColor='steelblue',    # THIS IS THE KEY FIX!\n                         symbolStrokeColor='none'   # Also set stroke color\n                     )),\n        tooltip=['country:N', 'continent:N', 'gdpPercap:Q', 'lifeExp:Q', 'pop:Q']\n    ).properties(\n        width=600,\n        height=400,\n        title=f'Gapminder Data for {year}'\n    )\n\n    return chart\n\n\n\n\n\n\n\n\nCode\ngapminder_plot(1957, 'light_theme').show()\ngapminder_plot(1957, 'dark_theme').show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\ngapminder_plot(2007, 'light_theme').show()\ngapminder_plot(2007, 'dark_theme').show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1",
+    "text": "(a) Gapminder: 1957\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1\n\n\n\nThis code was translated by Databot and Claude from the plotly example at\nhttps://quarto.org/docs/get-started/computations/jupyter.html",
     "crumbs": [
       "contents shortcode",
       "altair contents"
     ]
   },
   {
-    "objectID": "pygal.html",
-    "href": "pygal.html",
-    "title": "pygal",
+    "objectID": "pygal-embed.html",
+    "href": "pygal-embed.html",
+    "title": "pygal embed",
     "section": "",
-    "text": "from quarto import theme_brand_pygal\n\nlight_style = theme_brand_pygal('light-brand.yml')\ndark_style = theme_brand_pygal('dark-brand.yml')\n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE"
-  },
-  {
-    "objectID": "altair-embed.html",
-    "href": "altair-embed.html",
-    "title": "altair embed",
-    "section": "",
-    "text": "Source: altair\n\n\nFigure 1\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "text": "Pygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\nSource: pygal",
     "crumbs": [
       "embed shortcode",
-      "altair embed"
+      "pygal embed"
     ]
   },
   {
-    "objectID": "great-tables.html",
-    "href": "great-tables.html",
-    "title": "great tables",
+    "objectID": "altair.html",
+    "href": "altair.html",
+    "title": "altair",
     "section": "",
-    "text": "from great_tables import GT, exibble\nfrom IPython.display import display\n\ngt_ex = (\n  GT(exibble.head(5), rowname_col=\"row\", groupname_col=\"group\")\n    .tab_header(\"THE HEADING\", \"(a subtitle)\")\n    .tab_stubhead(\"THE STUBHEAD\")\n    .tab_source_note(\"THE SOURCE NOTE\")\n)\n\ndisplay(gt_ex.tab_options(**light_theme))\ndisplay(gt_ex.tab_options(**dark_theme))\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti."
+    "text": "from quarto import theme_brand_altair\nimport altair as alt\n\nlight_theme = theme_brand_altair('light-brand.yml')\ndark_theme = theme_brand_altair('dark-brand.yml')\n\nalt.theme.register('light_theme', enable=False)(light_theme)\nalt.theme.register('dark_theme', enable=False)(dark_theme);\n\n\nNo crossref or caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\necho: false\n#| renderings: [light, dark]\n\nchart = alt.Chart(cars).mark_point().encode(\n        x='Horsepower',\n        y='Acceleration',\n        color='Origin',\n    ).properties(width=800, height=500).interactive()\n\nalt.theme.enable('light_theme')\nchart.show()\n\nalt.theme.enable('dark_theme')\nchart.show()"
   },
   {
-    "objectID": "matplotlib-embed.html",
-    "href": "matplotlib-embed.html",
-    "title": "matplotlib embed",
+    "objectID": "bokeh-embed.html",
+    "href": "bokeh-embed.html",
+    "title": "bokeh embed",
     "section": "",
-    "text": "no crossref, no caption\n\n\n\n\n\n\n\n\n\nSource: matplotlib\n\n\ncrossref, no caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\ncrossref and caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: cosine",
+    "text": "bokeh splom\n\n\n\n\n  \n\n\n\n\n  \n\n\n\nSource: bokeh\n\n\nagain",
     "crumbs": [
       "embed shortcode",
-      "matplotlib embed"
+      "bokeh embed"
     ]
   },
   {
-    "objectID": "great-tables-embed.html",
-    "href": "great-tables-embed.html",
-    "title": "great tables embed",
+    "objectID": "plotnine-contents.html",
+    "href": "plotnine-contents.html",
+    "title": "plotnine contents",
     "section": "",
-    "text": "THE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nSource: great tables",
-    "crumbs": [
-      "embed shortcode",
-      "great tables embed"
-    ]
-  },
-  {
-    "objectID": "seaborn.html",
-    "href": "seaborn.html",
-    "title": "seaborn",
-    "section": "",
-    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset.\n\n\n\nFollow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
-  },
-  {
-    "objectID": "seaborn.html#overview",
-    "href": "seaborn.html#overview",
-    "title": "seaborn",
-    "section": "",
-    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset."
-  },
-  {
-    "objectID": "seaborn.html#code-implementation",
-    "href": "seaborn.html#code-implementation",
-    "title": "seaborn",
-    "section": "",
-    "text": "Follow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
-  },
-  {
-    "objectID": "plotly-embed.html",
-    "href": "plotly-embed.html",
-    "title": "plotly embed",
-    "section": "",
-    "text": "plotly violin\n\n\n\n\n\n\n\n\n\nSource: plotly-python\n\n\nagain",
-    "crumbs": [
-      "embed shortcode",
-      "plotly embed"
-    ]
-  },
-  {
-    "objectID": "plotly-contents.html",
-    "href": "plotly-contents.html",
-    "title": "plotly contents",
-    "section": "",
-    "text": "This is the plotly example at\nhttps://quarto.org/docs/get-started/computations/jupyter.html\nadapted for renderings: [light,dark] and using the contents shortcode because renderings is incompatible with crossref cell options.\n\n\n6.0.1\n\n\n\n\nCode\nimport plotly.express as px\nimport plotly.io as pio\n\ngapminder = px.data.gapminder()\ndef gapminder_plot(year, template):\n    gapminderYear = gapminder.query(\"year == \" +\n                                    str(year))\n    fig = px.scatter(gapminderYear,\n                     x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\",\n                     size=\"pop\", size_max=60,\n                     hover_name=\"country\")\n    fig.update_layout(template=template)\n    fig.show()\n\n\n\n\n\n\n\n\nCode\ngapminder_plot(1957, 'light_brand')\ngapminder_plot(1957, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\ngapminder_plot(2007, 'light_brand')\ngapminder_plot(2007, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1",
+    "text": "(a) Gapminder: 1957\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1\n\n\n\nThis code was translated by Databot and Claude from the altair-contents notebook.",
     "crumbs": [
       "contents shortcode",
-      "plotly contents"
+      "plotnine contents"
     ]
   },
   {
-    "objectID": "seaborn-embed.html",
-    "href": "seaborn-embed.html",
-    "title": "seaborn embed",
+    "objectID": "matplotlib.html",
+    "href": "matplotlib.html",
+    "title": "matplotlib",
     "section": "",
-    "text": "Source: seaborn",
-    "crumbs": [
-      "embed shortcode",
-      "seaborn embed"
-    ]
+    "text": "No crossref or caption"
+  },
+  {
+    "objectID": "plotly-python.html",
+    "href": "plotly-python.html",
+    "title": "plotly-python",
+    "section": "",
+    "text": "Question\nHow can I draw a violin plot of the Iris data using Plotly?\n\n\nExplanation\nPlotly is an interactive plotting library that is ideal for creating detailed interactive plots, including violin plots. It is easy to create a violin plot using the plotly.express module, which simplifies many common plotting tasks. The Iris dataset, commonly used in machine learning, is built into the sklearn library. We will load this dataset, convert it into a suitable format using Pandas, and then plot it using Plotly.\n\n\nCode\n\n\n\n\n\n\n\n\nAgain!\n\n\n\n\n\n\n\n\nThis code uses plotly.express to create a violin plot of the sepal length by species from the Iris dataset. The sepal length (cm) is plotted on the Y-axis, with each species on the X-axis. The violin plot provides insights into the distribution of sepal length measurements within each species, along with a box plot overlay and individual measurements as jittered points for detailed data analysis."
   },
   {
     "objectID": "plotnine.html",
@@ -175,57 +128,148 @@
     "text": "Code and Explanation\n\nfrom quarto import theme_brand_plotnine\n\nlight_theme = theme_brand_plotnine('light-brand.yml')\ndark_theme = theme_brand_plotnine('dark-brand.yml')\n\n\nfrom plotnine import *\nimport pandas as pd\nfrom sklearn.datasets import load_iris\n\n# Load the iris dataset\niris = load_iris()\niris_df = pd.DataFrame(iris.data, columns=iris.feature_names)\niris_df['species'] = pd.Categorical(iris.target_names[iris.target])\n\nplot = (ggplot(iris_df, aes(x='species', y='sepal length (cm)', fill='species'))\n    + geom_violin()\n    + labs(title='Distribution of Sepal Length by Iris Species',\n            x='Species',\n            y='Sepal Length (cm)')\n    + theme_minimal()\n)\n\ndisplay(plot + light_theme)\ndisplay(plot + dark_theme)\n\n\n\n\n\n\n\nThis code:\n\nImports the necessary libraries\nLoads the iris dataset and converts it to a pandas DataFrame\nCreates a violin plot showing the distribution of sepal length for each iris species\nAdds appropriate labels and uses a minimal theme for clean visualization\n\nThe key correction in this version is using the proper column name ‘sepal length (cm)’ instead of ‘sepal_length’, as that’s how it’s named in the sklearn iris dataset. The violin plot combines aspects of a box plot with a density plot, showing the full distribution shape of the data. The width of each “violin” represents the density of data points at that y-value, making it easy to see where measurements are concentrated for each species."
   },
   {
-    "objectID": "plotly-python.html",
-    "href": "plotly-python.html",
-    "title": "plotly-python",
+    "objectID": "seaborn-embed.html",
+    "href": "seaborn-embed.html",
+    "title": "seaborn embed",
     "section": "",
-    "text": "Question\nHow can I draw a violin plot of the Iris data using Plotly?\n\n\nExplanation\nPlotly is an interactive plotting library that is ideal for creating detailed interactive plots, including violin plots. It is easy to create a violin plot using the plotly.express module, which simplifies many common plotting tasks. The Iris dataset, commonly used in machine learning, is built into the sklearn library. We will load this dataset, convert it into a suitable format using Pandas, and then plot it using Plotly.\n\n\nCode\n\n\n\n\n\n\n\n\nAgain!\n\n\n\n\n\n\n\n\nThis code uses plotly.express to create a violin plot of the sepal length by species from the Iris dataset. The sepal length (cm) is plotted on the Y-axis, with each species on the X-axis. The violin plot provides insights into the distribution of sepal length measurements within each species, along with a box plot overlay and individual measurements as jittered points for detailed data analysis."
+    "text": "Source: seaborn",
+    "crumbs": [
+      "embed shortcode",
+      "seaborn embed"
+    ]
   },
   {
-    "objectID": "matplotlib.html",
-    "href": "matplotlib.html",
-    "title": "matplotlib",
+    "objectID": "plotly-contents.html",
+    "href": "plotly-contents.html",
+    "title": "plotly contents",
     "section": "",
-    "text": "No crossref or caption"
-  },
-  {
-    "objectID": "plotnine-contents.html",
-    "href": "plotnine-contents.html",
-    "title": "plotnine contents",
-    "section": "",
-    "text": "This code was translated by Databot and Claude from the subfigure-contents-shortcode-plotnine.ipynb notebook.\n\n\nCode\nfrom plotnine import *\nimport plotly.express as px\n\ngapminder = px.data.gapminder()\n\n\ndef gapminder_plot(year):\n    \"\"\"\n    Create a gapminder scatter plot using plotnine\n\n    Parameters:\n    year: int - Year to filter data for\n    theme: str - plotnine theme name (options: 'default', 'minimal', 'classic',\n                 'gray', 'dark', 'void', 'light', 'linedraw', 'bw')\n    \"\"\"\n    # Filter data for the specified year (using pandas DataFrame)\n    gapminder_year = gapminder[gapminder['year'] == year]\n\n    return (\n        ggplot(gapminder_year, aes(x=\"gdpPercap\", y=\"lifeExp\"))\n        + geom_point(aes(color=\"continent\", size=\"pop\"), alpha=0.7)\n        + scale_x_log10(name=\"GDP per Capita\")\n        + scale_y_continuous(name=\"Life Expectancy\")\n        + scale_color_discrete(name=\"Continent\")\n        + scale_size_continuous(\n            name=\"Population\",\n            range=(2, 20),  # Equivalent to size range in Altair\n            guide=guide_legend(override_aes={\"alpha\": 1, \"color\": \"steelblue\"})\n        )\n        + labs(title=f\"Gapminder Data for {year}\")\n        + theme_minimal()\n    )\n\n\n\n\n\n\n\n\nCode\nplot1957 = gapminder_plot(1957)\ndisplay(plot1957 + light_theme)\ndisplay(plot1957 + dark_theme)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\nplot2007 = gapminder_plot(2007)\ndisplay(plot2007 + light_theme)\ndisplay(plot2007 + dark_theme)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1",
+    "text": "This is the plotly example from Quarto’s Getting Started with Jupyter Notebooks\nWe’ve adapted the code for renderings: [light,dark] and we use the contents shortcode to put the outputs into subfigures:\n\n\n\n\n\n\nCode\ngapminder_plot(1957, 'light_brand')\ngapminder_plot(1957, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\ngapminder_plot(2007, 'light_brand')\ngapminder_plot(2007, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n6.1.0\n\n\n\n\nCode\nimport plotly.express as px\nimport plotly.io as pio\n\ngapminder = px.data.gapminder()\ndef gapminder_plot(year, template):\n    gapminderYear = gapminder.query(\"year == \" +\n                                    str(year))\n    fig = px.scatter(gapminderYear,\n                     x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\",\n                     size=\"pop\", size_max=60,\n                     hover_name=\"country\")\n    fig.update_layout(template=template)\n    fig.show()",
     "crumbs": [
       "contents shortcode",
-      "plotnine contents"
+      "plotly contents"
     ]
   },
   {
-    "objectID": "bokeh-embed.html",
-    "href": "bokeh-embed.html",
-    "title": "bokeh embed",
+    "objectID": "matplotlib-markdown.html",
+    "href": "matplotlib-markdown.html",
+    "title": "matplotlib markdown",
     "section": "",
-    "text": "bokeh splom\n\n\n\n\n  \n\n\n\n\n  \n\n\n\nSource: bokeh\n\n\nagain",
+    "text": "Code\nimport matplotlib.pyplot as plt\n\nlight_style()\nfig = plt.figure()\nfig.set_size_inches(12, 7)\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)\n\ndark_style()\nfig = plt.figure()\nfig.set_size_inches(12, 7)\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: matplotlib in light and dark",
     "crumbs": [
-      "embed shortcode",
-      "bokeh embed"
+      "markdown cells",
+      "matplotlib markdown"
     ]
   },
   {
-    "objectID": "altair.html",
-    "href": "altair.html",
-    "title": "altair",
+    "objectID": "matplotlib-markdown.html#matplotlib",
+    "href": "matplotlib-markdown.html#matplotlib",
+    "title": "matplotlib markdown",
     "section": "",
-    "text": "from quarto import theme_brand_altair\nimport altair as alt\n\nlight_theme = theme_brand_altair('light-brand.yml')\ndark_theme = theme_brand_altair('dark-brand.yml')\n\nalt.theme.register('light_theme', enable=False)(light_theme)\nalt.theme.register('dark_theme', enable=False)(dark_theme);\n\n\nNo crossref or caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\necho: false\n#| renderings: [light, dark]\n\nchart = alt.Chart(cars).mark_point().encode(\n        x='Horsepower',\n        y='Acceleration',\n        color='Origin',\n    ).properties(width=800, height=500).interactive()\n\nalt.theme.enable('light_theme')\nchart.show()\n\nalt.theme.enable('dark_theme')\nchart.show()"
+    "text": "Code\nimport matplotlib.pyplot as plt\n\nlight_style()\nfig = plt.figure()\nfig.set_size_inches(12, 7)\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)\n\ndark_style()\nfig = plt.figure()\nfig.set_size_inches(12, 7)\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: matplotlib in light and dark",
+    "crumbs": [
+      "markdown cells",
+      "matplotlib markdown"
+    ]
   },
   {
-    "objectID": "pygal-embed.html",
-    "href": "pygal-embed.html",
-    "title": "pygal embed",
+    "objectID": "plotly-embed.html",
+    "href": "plotly-embed.html",
+    "title": "plotly embed",
     "section": "",
-    "text": "Pygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\nSource: pygal",
+    "text": "plotly violin\n\n\n\n\n\n\n\n\n\nSource: plotly-python\n\n\nagain",
     "crumbs": [
       "embed shortcode",
-      "pygal embed"
+      "plotly embed"
+    ]
+  },
+  {
+    "objectID": "seaborn.html",
+    "href": "seaborn.html",
+    "title": "seaborn",
+    "section": "",
+    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset.\n\n\n\nFollow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
+  },
+  {
+    "objectID": "seaborn.html#overview",
+    "href": "seaborn.html#overview",
+    "title": "seaborn",
+    "section": "",
+    "text": "Seaborn is a powerful Python visualization library based on Matplotlib that provides a high-level interface for drawing attractive statistical graphics. One of its features is the ability to easily create violin plots, which are excellent for visualizing the distribution and density of data. In this guide, we will demonstrate how to create a violin plot using the Seaborn library with the Iris dataset."
+  },
+  {
+    "objectID": "seaborn.html#code-implementation",
+    "href": "seaborn.html#code-implementation",
+    "title": "seaborn",
+    "section": "",
+    "text": "Follow these simple steps to draw a violin plot using Seaborn:\n\n\nBelow is a complete example to create a violin plot for the Iris dataset using Seaborn:\n\nfrom quarto import theme_brand_seaborn\n\nlight_params = theme_brand_seaborn(\"light-brand.yml\")\ndark_params = theme_brand_seaborn(\"dark-brand.yml\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Loading: We use Seaborn’s load_dataset function to load the Iris dataset, which is included in Seaborn’s collection of sample datasets.\nCreating the Violin Plot: The violinplot function from Seaborn is used, where we specify the x parameter to be the species and the y parameter to be the sepal length. The inner=\"quartile\" option adds a box plot inside the violin plot to display the quartiles of the data, providing additional context.\nDisplay Settings: The plot’s title is set for clarity, and the plot is displayed using plt.show(), which renders the complete visualization.\n\n\n\n\nSeaborn simplifies the process of creating violin plots significantly compared to manual methods with other libraries like Bokeh. It is especially useful for visualizations that require presenting the distribution alongside comparison groups without extensive configuration."
+  },
+  {
+    "objectID": "great-tables-embed.html",
+    "href": "great-tables-embed.html",
+    "title": "great tables embed",
+    "section": "",
+    "text": "THE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nSource: great tables",
+    "crumbs": [
+      "embed shortcode",
+      "great tables embed"
+    ]
+  },
+  {
+    "objectID": "matplotlib-embed.html",
+    "href": "matplotlib-embed.html",
+    "title": "matplotlib embed",
+    "section": "",
+    "text": "no crossref, no caption\n\n\n\n\n\n\n\n\n\nSource: matplotlib\n\n\ncrossref, no caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\ncrossref and caption\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: cosine",
+    "crumbs": [
+      "embed shortcode",
+      "matplotlib embed"
+    ]
+  },
+  {
+    "objectID": "great-tables.html",
+    "href": "great-tables.html",
+    "title": "great tables",
+    "section": "",
+    "text": "from great_tables import GT, exibble\nfrom IPython.display import display\n\ngt_ex = (\n  GT(exibble.head(5), rowname_col=\"row\", groupname_col=\"group\")\n    .tab_header(\"THE HEADING\", \"(a subtitle)\")\n    .tab_stubhead(\"THE STUBHEAD\")\n    .tab_source_note(\"THE SOURCE NOTE\")\n)\n\ndisplay(gt_ex.tab_options(**light_theme))\ndisplay(gt_ex.tab_options(**dark_theme))\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTHE HEADING\n\n\n(a subtitle)\n\n\nTHE STUBHEAD\nnum\nchar\nfctr\ndate\ntime\ndatetime\ncurrency\n\n\n\n\ngrp_a\n\n\nrow_1\n0.1111\napricot\none\n2015-01-15\n13:35\n2018-01-01 02:22\n49.95\n\n\nrow_2\n2.222\nbanana\ntwo\n2015-02-15\n14:40\n2018-02-02 14:33\n17.95\n\n\nrow_3\n33.33\ncoconut\nthree\n2015-03-15\n15:45\n2018-03-03 03:44\n1.39\n\n\nrow_4\n444.4\ndurian\nfour\n2015-04-15\n16:50\n2018-04-04 15:55\n65100.0\n\n\ngrp_b\n\n\nrow_5\n5550.0\n\nfive\n2015-05-15\n17:55\n2018-05-05 04:00\n1325.81\n\n\n\nTHE SOURCE NOTE\n\n\n\n\n\n\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti."
+  },
+  {
+    "objectID": "altair-embed.html",
+    "href": "altair-embed.html",
+    "title": "altair embed",
+    "section": "",
+    "text": "Source: altair\n\n\nFigure 1\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "crumbs": [
+      "embed shortcode",
+      "altair embed"
+    ]
+  },
+  {
+    "objectID": "pygal.html",
+    "href": "pygal.html",
+    "title": "pygal",
+    "section": "",
+    "text": "from quarto import theme_brand_pygal\n\nlight_style = theme_brand_pygal('light-brand.yml')\ndark_style = theme_brand_pygal('dark-brand.yml')\n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE\n    \n  \n\n\n\n\n\n\n  \n  \n  \n  \n  \n    \n      \nPygal44881212161620202424282832323636113.607692307692309549.23076923076933127.00512820512819518.93652445722275240.4025641025641488.642279683676216353.8322.0239334291701413467.19743589743587367.465300589489973580.5948717948718518.93652445722277693.9923076923077458.34803491012966 (+5)13.607692307692309473.49515729690295 (+2)127.00512820512819488.64227968367628 (+3)240.4025641025641443.2009125233563518 (+2)353.8291.7296886556236518 (+5)467.19743589743587291.7296886556236510 (+7)580.5948717948718412.906667749809824 (+17)693.9923076923077200.84695433498412 (+6)13.607692307692309382.6124229762632515 (+10)127.00512820512819337.171055815943417 (+9)240.4025641025641306.8768110423968725 (+7)353.8185.6998319482107721 (+3)467.19743589743587246.2883214953038211 (+1)580.5948717948718397.759545363036524 (+0)693.9923076923077200.84695433498414 (+2)13.607692307692309352.318178202716718 (+3)127.00512820512819291.7296886556236522 (+5)240.4025641025641231.1411991085305434 (+9)353.849.37573046725134433 (+12)467.1974358974358764.5228528540246220 (+9)580.5948717948718261.435443882077129 (+5)693.9923076923077125.1113424011176721 (+7)13.607692307692309246.2883214953038222 (+4)127.00512820512819231.1411991085305424 (+2)240.4025641025641200.84695433498435 (+1)353.834.22860808047812535 (+2)467.1974358974358734.22860808047812530 (+10)580.5948717948718109.9642200143443329 (+0)693.9923076923077125.11134240111767ABCDE"
+  },
+  {
+    "objectID": "plotly-markdown.html",
+    "href": "plotly-markdown.html",
+    "title": "plotly markdown",
+    "section": "",
+    "text": "Code\nimport plotly.express as px\nimport plotly.io as pio\ngapminder = px.data.gapminder()\ndef gapminder_plot(year, template):\n    gapminderYear = gapminder.query(\"year == \" +\n                                    str(year))\n    fig = px.scatter(gapminderYear,\n                     x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\",\n                     size=\"pop\", size_max=60,\n                     hover_name=\"country\")\n    fig.update_layout(template=template)\n    fig.show()\n\n\n\n\n\n\n\n\nCode\ngapminder_plot(1957, 'light_brand')\ngapminder_plot(1957, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\ngapminder_plot(2007, 'light_brand')\ngapminder_plot(2007, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1",
+    "crumbs": [
+      "markdown cells",
+      "plotly markdown"
+    ]
+  },
+  {
+    "objectID": "plotly-markdown.html#plotly",
+    "href": "plotly-markdown.html#plotly",
+    "title": "plotly markdown",
+    "section": "",
+    "text": "Code\nimport plotly.express as px\nimport plotly.io as pio\ngapminder = px.data.gapminder()\ndef gapminder_plot(year, template):\n    gapminderYear = gapminder.query(\"year == \" +\n                                    str(year))\n    fig = px.scatter(gapminderYear,\n                     x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\",\n                     size=\"pop\", size_max=60,\n                     hover_name=\"country\")\n    fig.update_layout(template=template)\n    fig.show()\n\n\n\n\n\n\n\n\nCode\ngapminder_plot(1957, 'light_brand')\ngapminder_plot(1957, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(a) Gapminder: 1957\n\n\n\n\n\n\nCode\ngapminder_plot(2007, 'light_brand')\ngapminder_plot(2007, 'dark_brand')\n\n\n\n\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json\n\n\n\n\n(b) Gapminder: 2007\n\n\n\n\n\n\n\nFigure 1",
+    "crumbs": [
+      "markdown cells",
+      "plotly markdown"
     ]
   },
   {
