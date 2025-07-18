@@ -5,7 +5,9 @@ color:
   foreground:
     light: "#333333"
     dark: "#aaaaaa"
-  primary: white
+  primary:
+    light: "#826"
+    dark: white
 typography:
   fonts:
     - family: "Montserrat"
