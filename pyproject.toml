@@ -1,5 +1,5 @@
 [project]
-name = "jupyter-embed-testing"
+name = "jupyter-notebook-renderings"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -13,9 +13,10 @@ dependencies = [
     "jupyter>=1.1.1",
     "jupyterlab-quarto>=0.3.5",
     "matplotlib>=3.10.0",
-    "plotly>6",
+    "plotly==6.0.1",
     "plotnine>=0.14.5",
     "polars>=1.30.0",
+    "pyarrow>=20.0.0",
     "pygal>=3.0.5",
     "quarto",
     "scikit-learn>=1.6.1",
