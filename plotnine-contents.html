@@ -436,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>This code was translated by Databot and Claude from the subfigure-contents-shortcode-plotnine.ipynb notebook.</p>
-<div id="d634674a-7c60-4f0c-829a-f0fc1889acf4" class="cell" data-execution_count="11">
+<div id="d634674a-7c60-4f0c-829a-f0fc1889acf4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> scale_size_continuous(</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            name<span class="op">=</span><span class="st">"Population"</span>,</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">range</span><span class="op">=</span>(<span class="dv">2</span>, <span class="dv">20</span>),  <span class="co"># Equivalent to size range in Altair</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            guide<span class="op">=</span>guide_legend(override_aes<span class="op">=</span>{<span class="st">"alpha"</span>: <span class="dv">1</span>})</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            guide<span class="op">=</span>guide_legend(override_aes<span class="op">=</span>{<span class="st">"alpha"</span>: <span class="dv">1</span>, <span class="st">"color"</span>: <span class="st">"steelblue"</span>})</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> labs(title<span class="op">=</span><span class="ss">f"Gapminder Data for </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> theme_minimal()</span>
@@ -487,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="fig-gapminder-1957" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-gapminder-1957-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="gapminder-1957" class="cell" data-renderings="[&quot;light&quot;,&quot;dark&quot;]" data-execution_count="12">
+<div id="gapminder-1957" class="cell" data-renderings="[&quot;light&quot;,&quot;dark&quot;]" data-execution_count="3">
 <div class="light-content">
 <p><img src="plotnine-contents_files/figure-html/gapminder-1957-output-1.png" id="gapminder-1957-1" class="img-fluid figure-img" data-ref-parent="fig-gapminder"></p>
 </div>
@@ -512,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="fig-gapminder-2007" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-gapminder-2007-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="gapminder-2007" class="cell" data-renderings="[&quot;light&quot;,&quot;dark&quot;]">
+<div id="gapminder-2007" class="cell" data-renderings="[&quot;light&quot;,&quot;dark&quot;]" data-execution_count="4">
 <div class="light-content">
 <p><img src="plotnine-contents_files/figure-html/gapminder-2007-output-1.png" id="gapminder-2007-1" class="img-fluid figure-img" data-ref-parent="fig-gapminder"></p>
 </div>
